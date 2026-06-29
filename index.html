@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Firefly — Interactive Canvas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Geist+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <main>
+    <section class="hero">
+      <p class="label">Interactive Canvas · Vanilla JS</p>
+      <h1>Firefly</h1>
+      <p class="desc">
+        Physics-based particle engine.<br />
+        Move your cursor to push them away.
+      </p>
+    </section>
+
+    <section class="specs">
+      <div class="spec-grid">
+        <div class="spec-item">
+          <span class="spec-value" id="count-val">55</span>
+          <span class="spec-label">Particles</span>
+          <input type="range" id="count" min="10" max="120" value="55" />
+        </div>
+        <div class="spec-item">
+          <span class="spec-value" id="radius-val">110</span>
+          <span class="spec-label">Repulsion Radius</span>
+          <input type="range" id="radius" min="30" max="250" value="110" />
+        </div>
+        <div class="spec-item">
+          <span class="spec-value" id="speed-val">0.17</span>
+          <span class="spec-label">Speed</span>
+          <input type="range" id="speed" min="1" max="20" value="5" />
+        </div>
+        <div class="spec-item">
+          <span class="spec-value" id="size-val">3.5</span>
+          <span class="spec-label">Size</span>
+          <input type="range" id="size" min="1" max="20" value="5" />
+        </div>
+      </div>
+
+      <div class="color-row">
+        <span class="spec-label">Color Preset</span>
+        <div class="color-presets">
+          <button class="preset active" data-color="255,210,100" style="background: rgb(255,210,100)"></button>
+          <button class="preset" data-color="160,210,255" style="background: rgb(160,210,255)"></button>
+          <button class="preset" data-color="180,255,160" style="background: rgb(180,255,160)"></button>
+          <button class="preset" data-color="255,160,200" style="background: rgb(255,160,200)"></button>
+          <button class="preset" data-color="220,180,255" style="background: rgb(220,180,255)"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="about">
+      <h2>How it works</h2>
+      <ul>
+        <li><strong>Angle-based wandering</strong> — each firefly drifts on a slowly rotating heading vector, never snapping back to an origin.</li>
+        <li><strong>Permanent deflection</strong> — mouse repulsion updates the firefly's heading angle, so it continues in the new direction after the cursor leaves.</li>
+        <li><strong>Radial gradient glow</strong> — three-stop gradient drawn per frame on a single Canvas element.</li>
+        <li><strong>Boundary wrap</strong> — fireflies teleport across edges with a 20 px buffer for smooth transitions.</li>
+        <li><strong>Zero dependencies</strong> — pure Canvas 2D API, no frameworks.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="firefly.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
