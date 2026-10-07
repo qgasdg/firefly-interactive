@@ -3,6 +3,8 @@
 마우스를 움직이면 반딧불이들이 흩어지는 인터랙티브 캔버스입니다.
 프레임워크 없이 순수 JavaScript와 Canvas 2D API만으로 만들었습니다.
 
+**🔗 데모: https://firefly-interactive.vercel.app/**
+
 ## 실행 방법
 
 빌드 과정이 없어요. `index.html`을 브라우저로 열면 바로 동작합니다.
