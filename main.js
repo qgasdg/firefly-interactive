@@ -3,12 +3,9 @@ const canvas = document.getElementById('canvas');
 const engine = new FireflyEngine(canvas, {
   count: 55,
   color: [255, 210, 100],
-  minSpeed: 0.12,
-  maxSpeed: 0.22,
   minSize: 2,
   maxSize: 5,
   repulsionRadius: 110,
-  repulsionForce: 0.32,
 });
 
 engine.start();
@@ -36,11 +33,13 @@ $('radius').addEventListener('input', e => {
 });
 
 $('speed').addEventListener('input', e => {
-  const raw = +e.target.value;
-  const min = (raw / 100) * 0.8;
-  const max = min + 0.1;
-  $('speed-val').textContent = ((min + max) / 2).toFixed(2);
-  restart({ minSpeed: min, maxSpeed: max });
+  const v = +e.target.value * 0.07;
+  $('speed-val').textContent = v.toFixed(2);
+  engine.options.baseSpeed = v;
+  // Bring in-flight fireflies up to the new speed right away
+  for (const f of engine.fireflies) {
+    if (f.speed < v) f.speed = v;
+  }
 });
 
 $('size').addEventListener('input', e => {
